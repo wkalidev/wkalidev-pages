@@ -98,5 +98,22 @@ a{color:var(--lime)}
   <a class="cta" href="mailto:hello@wkalidev.com">hello@wkalidev.com</a>
   <a class="cta" href="https://t.me/wkalidev" style="margin-left:10px;background:#15161A;color:#C6F432;border:2px solid #C6F432">Telegram · @wkalidev</a>
 </main>
+<!-- Cookie consent banner -->
+<div id="wk-cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" style="position:fixed;bottom:16px;left:16px;right:16px;max-width:520px;margin:auto;background:#15161B;color:#F4F4EF;border:1px solid #2A2B30;border-radius:14px;padding:14px 16px;font:14px/1.4 system-ui,sans-serif;display:none;z-index:9999;box-shadow:0 10px 40px rgba(0,0,0,.5)">
+  I use Google Analytics to see which pages help people. OK?
+  <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+    <button type="button" onclick="wkConsent(false)" style="background:none;color:#9A9B93;border:1px solid #3A3B40;border-radius:8px;padding:6px 12px;cursor:pointer">No thanks</button>
+    <button type="button" onclick="wkConsent(true)" style="background:#C6F432;color:#0B0C0F;border:0;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer">Accept</button>
+  </div>
+</div>
+<script>
+  function wkConsent(ok) {
+    try { localStorage.setItem('wk-consent', ok ? 'yes' : 'no'); } catch (e) {}
+    if (ok) gtag('consent', 'update', {analytics_storage: 'granted'});
+    document.getElementById('wk-cookie').style.display = 'none';
+  }
+  try { if (!localStorage.getItem('wk-consent')) document.getElementById('wk-cookie').style.display = 'block'; }
+  catch (e) { document.getElementById('wk-cookie').style.display = 'block'; }
+</script>
 </body>
 </html>
