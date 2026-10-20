@@ -15,47 +15,115 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://about.wkalidev.com/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0E0F12;--card:#15161A;--line:#2A2B30;--text:#F4F4EF;--muted:#A8A8A0;--lime:#C6F432}
+:root{--bg:#0E0F12;--panel:#15161A;--line:#2A2B30;--text:#F4F4EF;--muted:#A8A8A0;--dim:#74746D;--lime:#C6F432;--blue:#7AA2FF;--red:#FF5A5A}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.6;
- background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px}
-.wrap{max-width:920px;margin:0 auto;padding:56px 20px 80px}
-.mono{font-family:"JetBrains Mono",monospace}
-.logo{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:28px}
-.lime{color:var(--lime)}
-.tag{font-family:"JetBrains Mono",monospace;color:var(--lime);letter-spacing:.3em;font-size:13px;font-weight:700}
-h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.02em;margin:14px 0 16px}
-h2{font-size:24px;margin:48px 0 16px}
-p{color:var(--muted);margin:0 0 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-.card h3{margin:0 0 6px;font-size:18px}
-.card p{margin:0;font-size:15px}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--muted);font-weight:500}
-td.price{font-family:"JetBrains Mono",monospace;color:var(--lime);white-space:nowrap}
-.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin:0 6px 8px 0;font-size:14px;color:var(--muted);font-family:"JetBrains Mono",monospace}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 "Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--lime)}
-.cta{display:inline-block;margin-top:8px;background:var(--lime);color:#0E0F12;font-weight:700;padding:12px 20px;border-radius:12px;text-decoration:none}
-.note{font-size:13px;color:#7A7A73}
-.hero{position:relative}
-#scene{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;opacity:.9;transition:opacity .4s}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-.card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;transform-style:preserve-3d;will-change:transform}
-.card:hover{border-color:#3d4a1a;box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 0 1px rgba(198,244,50,.12)}
-.stat{font-size:clamp(34px,5vw,46px);margin:0 0 4px;letter-spacing:-.02em}
-.shorts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.short{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;cursor:pointer;padding:0}
-.short img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .25s,transform .4s}
-.short:hover img{opacity:1;transform:scale(1.04)}
-.short .play{position:absolute;inset:auto 0 0 0;padding:14px;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--text);font:600 15px/1.3 "Space Grotesk",sans-serif}
-.short .play b{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--lime);color:#0E0F12;margin-bottom:8px;font-size:16px}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.mono{font-family:"JetBrains Mono",monospace}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.logo{font:700 26px "JetBrains Mono",monospace;text-decoration:none;color:var(--text)}
+.logo i{font-style:normal;color:var(--lime)}
+.btn{display:inline-block;font:700 15px "Space Grotesk",sans-serif;padding:12px 20px;border-radius:10px;text-decoration:none;border:1.5px solid var(--lime);cursor:pointer}
+.btn.solid{background:var(--lime);color:#0E0F12}
+.btn.ghost{background:transparent;color:var(--lime)}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;padding:40px 0 72px}
+.hero h1{font:700 clamp(40px,5.4vw,68px)/1.02 "Space Grotesk",sans-serif;letter-spacing:-.035em;margin:0 0 22px}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:30em;margin:0 0 28px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero>*{min-width:0}
+.lab{position:relative;min-height:590px}
+#scene{position:absolute;inset:-40px -24px -40px -24px;width:calc(100% + 48px);height:calc(100% + 80px);pointer-events:none}
+.ide{position:absolute;left:0;right:0;bottom:0;background:rgba(18,19,23,.9);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.ide header{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);font:400 13px "JetBrains Mono",monospace;color:var(--dim)}
+.ide header span.dot{width:10px;height:10px;border-radius:50%;background:#2f3138}
+.ide header .file{margin-left:8px}
+.ide pre{margin:0;padding:16px 0;font:400 14.5px/1.75 "JetBrains Mono",monospace;font-variant-ligatures:none;overflow-x:auto}
+.ln{display:block;padding:0 18px 0 14px;border-left:3px solid transparent;white-space:pre;transition:background .35s,border-color .35s,color .35s}
+.ln .n{display:inline-block;width:2ch;color:#4a4c55;margin-right:14px;text-align:right}
+.ln.bad{background:rgba(255,90,90,.12);border-left-color:var(--red)}
+.ln.good{background:rgba(198,244,50,.1);border-left-color:var(--lime)}
+.k{color:#C792EA}.f{color:var(--blue)}.c{color:#6b6d76}
+.ide footer{border-top:1px solid var(--line);padding:16px 18px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ide footer p{margin:0;font-size:15px;color:var(--muted);flex:1 1 260px;min-height:3.2em}
+.ide footer p b{color:var(--text)}
+#act{border-color:var(--red);background:var(--red);color:#0E0F12}
+#act.fix{border-color:var(--lime);background:var(--lime)}
+#act.replay{background:transparent;color:var(--muted);border-color:var(--line)}
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font:700 clamp(28px,3.4vw,40px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-.025em;margin:0 0 10px}
+.intro{color:var(--muted);max-width:38em;margin:0 0 36px}
+/* ledger */
+.ledger{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px}
+.ledger div{padding:24px 22px;border-left:1px solid var(--line)}
+.ledger div:first-child{border-left:0}
+.ledger strong{display:block;font:700 clamp(30px,3.6vw,44px)/1 "Space Grotesk",sans-serif;letter-spacing:-.03em;margin-bottom:10px}
+.ledger span{color:var(--muted);font-size:15px}
+.src{font-size:13px;color:var(--dim);margin-top:12px}
+/* series */
+.series{list-style:none;margin:0;padding:0}
+.series li{display:grid;grid-template-columns:190px 1fr 120px;gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
+.series li:first-child{border-top:1px solid var(--line)}
+.badge{justify-self:start;font:700 12.5px "JetBrains Mono",monospace;letter-spacing:.08em;color:#0E0F12;padding:5px 10px;border-radius:6px}
+.series h3{margin:0 0 4px;font-size:20px}
+.series p{margin:0;color:var(--muted)}
+.series .len{color:var(--dim);font:400 14px "JetBrains Mono",monospace;text-align:right}
+/* shorts */
+.shorts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.short{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;cursor:pointer;padding:0;color:var(--text);text-align:left}
+.short img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.short span{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.9));font:600 16px/1.3 "Space Grotesk",sans-serif}
+.short span b{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--lime);color:#0E0F12;margin-bottom:10px}
 .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.card{transition:none}#scene{display:none}}
+.note{font-size:13px;color:var(--dim)}
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.plan{border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column}
+.plan h3{margin:0 0 6px;font-size:18px}
+.plan .price{font:700 40px/1 "Space Grotesk",sans-serif;letter-spacing:-.03em;margin:14px 0 14px}
+.plan p{margin:0;color:var(--muted);font-size:15px}
+.plan.feat{background:var(--lime);color:#0E0F12;border-color:var(--lime);transform:translateY(-10px)}
+.plan.feat p{color:#2b3309}
+.plan .tag{font-size:13px;font-weight:700;margin-bottom:12px}
+.launch{display:flex;gap:10px;align-items:center;margin:0 0 28px;color:var(--muted)}
+.launch b{color:var(--lime)}
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.proof h3{font-size:18px;margin:0 0 8px}
+.proof p{margin:0;color:var(--muted);font-size:15.5px}
+/* contact */
+.contact{padding:96px 0 64px;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(36px,5vw,60px);max-width:14em}
+.contact .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.channels{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:48px;font-size:15px}
+.channels a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.channels a:hover{color:var(--text);border-color:var(--lime)}
+.foot{padding:24px 0 40px;color:var(--dim);font-size:13px}
+.foot a{color:var(--dim)}
+@media (max-width:960px){
+ .hero{grid-template-columns:1fr;gap:24px;padding-top:16px}
+ .lab{min-height:0}
+ #scene{position:relative;inset:auto;width:100%;height:260px;display:block;margin:-10px 0 -60px}
+ .ide{position:relative}
+ .ledger{grid-template-columns:repeat(2,1fr)}
+ .ledger div:nth-child(3){border-left:0}
+ .ledger div:nth-child(n+3){border-top:1px solid var(--line)}
+ .series li{grid-template-columns:1fr;gap:8px}
+ .series .len{text-align:left}
+ .shorts{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+ .short{scroll-snap-align:start}
+ .plans{grid-template-columns:1fr 1fr}
+ .plan.feat{transform:none}
+ .proof{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:560px){.plans{grid-template-columns:1fr}.ide pre{font-size:12.5px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ln{transition:none}}
 </style>
 <!-- Google tag (GA4) with Consent Mode v2: nothing is tracked until the visitor accepts -->
 <script>
@@ -71,161 +139,199 @@ a{color:var(--lime)}
 </script>
 </head>
 <body>
-<canvas id="scene" aria-hidden="true"></canvas>
-<main class="wrap">
-  <div class="logo"><span class="lime">{</span>wk<span class="lime">}</span> <span style="font-size:16px;color:var(--muted);font-weight:400">wkalidev</span></div>
+<div class="wrap">
+  <header class="bar">
+    <a class="logo" href="/media-kit" aria-label="wkalidev home"><i>{</i>wk<i>}</i></a>
+    <a class="btn ghost" href="#partner">Partner with me</a>
+  </header>
 
-  <p class="tag" style="margin-top:40px">MEDIA KIT · 2026</p>
-  <h1>Smart contract security &amp; <span class="lime">AI x Web3</span>, for builders.</h1>
-  <p>wkalidev is an independent full-stack Web3 &amp; AI developer and content creator. The content teaches developers and founders to ship smart contracts that don't get hacked, and to build faster with AI agents and MCP servers.</p>
+  <div class="hero">
+    <div>
+      <h1>I teach builders to ship contracts that don't get drained.</h1>
+      <p class="lede">wkalidev makes daily Shorts on smart contract security, Claude and MCP for Web3 developers and founders. Media kit and partnership rates, October 2026.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#partner">See partnership rates</a>
+        <a class="btn ghost" href="#watch">Watch the Shorts</a>
+      </div>
+    </div>
 
-  <h2 class="reveal">Audience</h2>
-  <div class="grid reveal">
-    <div class="card"><h3>Who</h3><p>Solidity / Clarity developers, Web3 startup founders, hackathon builders, AI engineers integrating onchain data.</p></div>
-    <div class="card"><h3>Where</h3><p>Europe first (FR · IT · BE), then North America and global. Content in English.</p></div>
-    <div class="card"><h3>Stage</h3><p>New channel, launched October 2026. New Shorts every day on YouTube, TikTok, Instagram, Facebook, X and Farcaster.</p></div>
+    <div class="lab">
+      <canvas id="scene" aria-hidden="true"></canvas>
+      <div class="ide" role="region" aria-label="Interactive Spot the Bug example">
+        <header><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="file">Vault.sol · try it</span></header>
+        <pre id="code"></pre>
+        <footer>
+          <p id="msg" aria-live="polite">This vault looks fine. <b>Can you spot the bug?</b></p>
+          <button id="act" class="btn" type="button">Spot the bug</button>
+        </footer>
+      </div>
+    </div>
   </div>
+</div>
 
-  <h2 class="reveal">Early numbers</h2>
-  <div class="grid reveal">
-    <div class="card"><h3 class="lime mono stat" data-count="2200" data-suffix="+">2,200+</h3><p>YouTube views in the first 3 weeks (October 2026).</p></div>
-    <div class="card"><h3 class="lime mono stat" data-count="100" data-suffix="%+">100%+</h3><p>Average view duration on 15 s Shorts: viewers watch them on repeat.</p></div>
-    <div class="card"><h3 class="lime mono stat" data-count="690" data-suffix="+">690+</h3><p>Views on the top Short: giving Claude live onchain data with MCP.</p></div>
+<section>
+  <div class="wrap">
+    <h2>Early numbers</h2>
+    <p class="intro">The channel launched in October 2026. Short, looping videos are what the algorithm rewards, and viewers rewatch them.</p>
+    <div class="ledger">
+      <div><strong>2,200+</strong><span>YouTube views in the first three weeks</span></div>
+      <div><strong>100%+</strong><span>Average view duration on 15-second Shorts</span></div>
+      <div><strong>690+</strong><span>Views on the top Short, about Claude and MCP</span></div>
+      <div><strong>6</strong><span>Platforms every Short goes out on</span></div>
+    </div>
+    <p class="src">Source: YouTube Analytics, October 1 to 20, 2026. Updated monthly.</p>
   </div>
-  <p class="note">Source: YouTube Analytics, October 1–20, 2026. Updated monthly.</p>
+</section>
 
-  <h2 class="reveal">See the content</h2>
-  <div class="shorts reveal">
-    <button class="short" data-yt="j2CSekNveZw" aria-label="Play: Give Claude live onchain data with MCP"><img loading="lazy" src="https://i.ytimg.com/vi/j2CSekNveZw/hqdefault.jpg" alt=""><span class="play"><b>▶</b><br>Give Claude live onchain data with MCP</span></button>
-    <button class="short" data-yt="nxEMvVepGbA" aria-label="Play: Spot the Solidity bug, reentrancy"><img loading="lazy" src="https://i.ytimg.com/vi/nxEMvVepGbA/hqdefault.jpg" alt=""><span class="play"><b>▶</b><br>Spot the Solidity bug: reentrancy</span></button>
-    <button class="short" data-yt="2oLz9Tk3GAk" aria-label="Play: Claude Code writes Foundry security tests"><img loading="lazy" src="https://i.ytimg.com/vi/2oLz9Tk3GAk/hqdefault.jpg" alt=""><span class="play"><b>▶</b><br>Claude Code writes Foundry security tests</span></button>
+<section>
+  <div class="wrap">
+    <h2>Four series, one audience</h2>
+    <p class="intro">Each series has its own colour on screen, so viewers know what they are about to learn.</p>
+    <ul class="series">
+      <li><span class="badge" style="background:var(--red)">SPOT THE BUG</span><div><h3>A real vulnerability in 15 seconds</h3><p>Reentrancy, missing access control, signature replay: the bug, how it is exploited, the fix.</p></div><span class="len">15 s Shorts</span></li>
+      <li><span class="badge" style="background:var(--red)">SECURITY 101</span><div><h3>Security principles for onchain and AI</h3><p>The CIA triad, prompt injection, token approvals, secure MCP servers, applied to real code.</p></div><span class="len">15–45 s Shorts</span></li>
+      <li><span class="badge" style="background:var(--blue)">MCP 101</span><div><h3>Give AI agents real tools</h3><p>What MCP is, how to build a tool in ten lines, and how Claude calls it against live chain data.</p></div><span class="len">Shorts, tutorials</span></li>
+      <li><span class="badge" style="background:var(--lime)">CLAUDE TIP</span><div><h3>Build faster with Claude and Claude Code</h3><p>Prompting, plan mode, CLAUDE.md files and workflows developers can use the same day.</p></div><span class="len">Daily Shorts</span></li>
+    </ul>
   </div>
-  <p class="note">Videos load from youtube-nocookie.com only when you click play.</p>
+</section>
 
-  <h2 class="reveal">Content formats</h2>
-  <div class="grid reveal">
-    <div class="card"><h3>Spot the Bug</h3><p>15 s Shorts: a real smart contract vulnerability, the exploit path and the fix.</p></div>
-    <div class="card"><h3>Security 101</h3><p>Security principles (CIA, AAA, prompt injection, token approvals) applied to smart contracts and AI agents.</p></div>
-    <div class="card"><h3>MCP 101 &amp; Claude Tips</h3><p>How to build with Claude, Claude Code and MCP servers, from first prompt to onchain tools.</p></div>
-    <div class="card"><h3>Hack Post-Mortems</h3><p>8–15 min breakdowns of public exploits, line by line.</p></div>
-    <div class="card"><h3>Build Onchain</h3><p>Zero-to-mainnet build-alongs on Base, Celo, Stacks and Arbitrum.</p></div>
+<section id="watch">
+  <div class="wrap">
+    <h2>Watch before you book</h2>
+    <p class="intro">The three Shorts that performed best so far. They play right here.</p>
+    <div class="shorts">
+      <button class="short" data-yt="j2CSekNveZw" aria-label="Play: Give Claude live onchain data with MCP"><img loading="lazy" src="https://i.ytimg.com/vi/j2CSekNveZw/hqdefault.jpg" alt=""><span><b>▶</b><br>Give Claude live onchain data with MCP</span></button>
+      <button class="short" data-yt="nxEMvVepGbA" aria-label="Play: Spot the Solidity bug, reentrancy"><img loading="lazy" src="https://i.ytimg.com/vi/nxEMvVepGbA/hqdefault.jpg" alt=""><span><b>▶</b><br>Spot the Solidity bug: reentrancy</span></button>
+      <button class="short" data-yt="2oLz9Tk3GAk" aria-label="Play: Claude Code writes Foundry security tests"><img loading="lazy" src="https://i.ytimg.com/vi/2oLz9Tk3GAk/hqdefault.jpg" alt=""><span><b>▶</b><br>Claude Code writes Foundry security tests</span></button>
+    </div>
+    <p class="note" style="margin-top:12px">Videos load from youtube-nocookie.com only after you press play.</p>
   </div>
+</section>
 
-  <h2 class="reveal">Channels</h2>
-  <p>
-    <a class="pill" href="https://youtube.com/@wkalidev">YouTube @wkalidev</a>
-    <a class="pill" href="https://www.facebook.com/wkalidev">Facebook /wkalidev</a>
-    <a class="pill" href="https://www.instagram.com/wkalidev">Instagram @wkalidev</a>
-    <a class="pill" href="https://www.tiktok.com/@wkalidev">TikTok @wkalidev</a>
-    <a class="pill" href="https://x.com/willycodexwar">X @willycodexwar</a>
-    <a class="pill" href="https://farcaster.xyz/zcodebase">Farcaster @zcodebase</a>
-    <a class="pill" href="https://t.me/wkalidev">Telegram @wkalidev</a>
-    <a class="pill" href="https://github.com/wkalidev">GitHub /wkalidev</a>
-    <a class="pill" href="https://wkalidev.com">wkalidev.com</a>
-    <a class="pill" href="https://ko-fi.com/wkalidev">Ko-fi shop</a>
-    <a class="pill" href="https://buymeacoffee.com/wkalidev">Buy Me a Coffee</a>
-  </p>
-
-  <h2 class="reveal">Partnership options</h2>
-  <p><span class="pill" style="color:var(--lime);border-color:var(--lime)">LAUNCH RATES · first 5 partners</span></p>
-  <table class="reveal">
-    <tr><th>Format</th><th>What you get</th><th>Rate</th></tr>
-    <tr><td>Dedicated Short</td><td>A Short built around your product, cross-posted to YouTube, TikTok, Instagram, Facebook, X and Farcaster.</td><td class="price">$49</td></tr>
-    <tr><td>3-Short series</td><td>Three Shorts over one week (problem, demo, result), cross-posted everywhere.</td><td class="price">$129</td></tr>
-    <tr><td>Tutorial video</td><td>A full tutorial using your tool in a real build, with a link and chapter in the description.</td><td class="price">$149</td></tr>
-    <tr><td>Integration mention</td><td>Your tool featured inside a build-along, with an affiliate or tracked link.</td><td class="price">Rev-share</td></tr>
-  </table>
-  <p class="note">Launch rates for the first 5 partners, then rates follow audience growth. Only tools I actually use and would recommend to clients. All sponsored content is clearly disclosed.</p>
-
-  <h2 class="reveal">Proof of work</h2>
-  <div class="grid reveal">
-    <div class="card"><h3>Shipped onchain</h3><p>Verified mainnet contracts on Celo, Base and Stacks. 25+ open-source projects on <a href="https://github.com/wkalidev">GitHub</a>.</p></div>
-    <div class="card"><h3>AI x Web3 tools</h3><p><a href="https://github.com/wkalidev/multichain-mcp">multichain-mcp</a>: an MCP server giving AI agents access to Stacks, Celo and Base. <a href="https://github.com/wkalidev/spot-the-bug-action">Spot the Bug Action</a>: Solidity PR scanning on GitHub.</p></div>
-    <div class="card"><h3>Writing &amp; training</h3><p>Two ebooks (Mastering Claude, Web3 on Base &amp; Solana, EN + FR). Fortinet NSE 1 certified (Threat Landscape).</p></div>
+<section id="partner">
+  <div class="wrap">
+    <h2>Partner with me</h2>
+    <p class="launch"><b>Launch rates for the first five partners.</b> Rates rise with the audience after that.</p>
+    <div class="plans">
+      <div class="plan"><h3>Dedicated Short</h3><div class="price">$49</div><p>One Short built around your product, posted on YouTube, TikTok, Instagram, Facebook, X and Farcaster.</p></div>
+      <div class="plan feat"><span class="tag">Best value</span><h3>3-Short series</h3><div class="price">$129</div><p>Three Shorts in one week: the problem, a demo, the result. Posted on all six platforms.</p></div>
+      <div class="plan"><h3>Tutorial video</h3><div class="price">$149</div><p>A full tutorial using your tool in a real build, with a link and a chapter in the description.</p></div>
+      <div class="plan"><h3>Integration mention</h3><div class="price">Rev-share</div><p>Your tool used inside a build-along, with an affiliate or tracked link.</p></div>
+    </div>
+    <p class="note" style="margin-top:20px">I only feature tools I use and would recommend to clients. Sponsored content is always disclosed.</p>
   </div>
+</section>
 
-  <h2 class="reveal">Beyond content</h2>
-  <p>Full-stack development: smart contracts (Solidity, Clarity), dApps (Next.js, TypeScript, wagmi/viem), stablecoin payments, AI agents &amp; MCP servers, smart contract security reviews (from €350).</p>
+<section>
+  <div class="wrap">
+    <h2>Proof of work</h2>
+    <p class="intro">Content comes from building. Everything below is public and can be checked.</p>
+    <div class="proof">
+      <div><h3>Shipped onchain</h3><p>Verified mainnet contracts on Celo, Base and Stacks, and 25+ open-source projects on <a href="https://github.com/wkalidev">GitHub</a>.</p></div>
+      <div><h3>AI x Web3 tools</h3><p><a href="https://github.com/wkalidev/multichain-mcp">multichain-mcp</a> gives AI agents access to Stacks, Celo and Base. <a href="https://github.com/wkalidev/spot-the-bug-action">Spot the Bug Action</a> scans Solidity pull requests.</p></div>
+      <div><h3>Writing and training</h3><p>Two ebooks, Mastering Claude and Web3 on Base &amp; Solana, in English and French. Fortinet NSE 1 certified.</p></div>
+    </div>
+    <p class="intro" style="margin:40px 0 0">Also available for development work: smart contracts in Solidity and Clarity, dApps, stablecoin payments, AI agents and MCP servers, and smart contract security reviews from €350.</p>
+  </div>
+</section>
 
-  <h2 class="reveal">Contact</h2>
-  <p>Partnerships, sponsorships and client projects:</p>
-  <a class="cta" href="mailto:hello@wkalidev.com">hello@wkalidev.com</a>
-  <a class="cta" href="https://t.me/wkalidev" style="margin-left:10px;background:#15161A;color:#C6F432;border:2px solid #C6F432">Telegram · @wkalidev</a>
-  <p class="note" style="margin-top:40px"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
-</main>
+<div class="contact">
+  <div class="wrap">
+    <h2>Have a tool builders should know about?</h2>
+    <p class="intro" style="margin:0">Tell me what it does. I reply within 48 hours with a format and a date.</p>
+    <div class="ctas">
+      <a class="btn solid" href="mailto:hello@wkalidev.com">Email hello@wkalidev.com</a>
+      <a class="btn ghost" href="https://t.me/wkalidev">Message on Telegram</a>
+    </div>
+    <nav class="channels" aria-label="Channels">
+      <a href="https://youtube.com/@wkalidev">YouTube</a>
+      <a href="https://www.tiktok.com/@wkalidev">TikTok</a>
+      <a href="https://www.instagram.com/wkalidev">Instagram</a>
+      <a href="https://www.facebook.com/wkalidev">Facebook</a>
+      <a href="https://x.com/willycodexwar">X</a>
+      <a href="https://farcaster.xyz/zcodebase">Farcaster</a>
+      <a href="https://github.com/wkalidev">GitHub</a>
+      <a href="https://ko-fi.com/wkalidev">Ko-fi shop</a>
+      <a href="https://buymeacoffee.com/wkalidev">Buy Me a Coffee</a>
+      <a href="https://wkalidev.com">wkalidev.com</a>
+    </nav>
+  </div>
+</div>
+<div class="wrap foot"><a href="/terms">Terms</a> &nbsp; <a href="/privacy">Privacy</a> &nbsp; © 2026 wkalidev</div>
+
 <script>
-// Scroll reveal + counters
+// Spot the Bug: interactive code panel
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
-    e.target.classList.add('in'); io.unobserve(e.target);
-    e.target.querySelectorAll('[data-count]').forEach(function(el){
-      var end=+el.dataset.count, suf=el.dataset.suffix||'', t0=null, dur=1400;
-      if(reduce){ el.textContent=end.toLocaleString('en-US')+suf; return; }
-      function step(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/dur), v=Math.round(end*(1-Math.pow(1-p,3)));
-        el.textContent=v.toLocaleString('en-US')+suf; if(p<1) requestAnimationFrame(step); }
-      requestAnimationFrame(step);
-    });
-  }); }, {threshold:.15});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  // 3D tilt on cards (mouse only)
-  if(!reduce && window.matchMedia('(hover: hover)').matches){
-    document.querySelectorAll('.card').forEach(function(c){
-      c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-        c.style.transform='perspective(700px) rotateX('+(-y*8)+'deg) rotateY('+(x*8)+'deg) translateZ(6px)'; });
-      c.addEventListener('mouseleave',function(){ c.style.transform=''; });
-    });
-  }
-  // Click-to-load YouTube Shorts
-  document.querySelectorAll('.short').forEach(function(b){ b.addEventListener('click',function(){
-    if(b.querySelector('iframe')) return;
-    var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';
-    f.allow='autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen=true; f.title=b.getAttribute('aria-label');
-    b.appendChild(f); }); });
+  var L = function(t){ return t.replace(/\b(function|external|uint256|bool|require|nonReentrant)\b/g,'<span class="k">$1</span>').replace(/\b(withdraw|call)\b/g,'<span class="f">$1</span>').replace(/(\/\/.*)$/,'<span class="c">$1</span>'); };
+  var bug = ['function withdraw() external {','    uint256 bal = balances[msg.sender];','    (bool ok, ) = msg.sender.call{value: bal}("");','    require(ok);','    balances[msg.sender] = 0;','}'];
+  var fix = ['function withdraw() external nonReentrant {','    uint256 bal = balances[msg.sender];','    balances[msg.sender] = 0;','    (bool ok, ) = msg.sender.call{value: bal}("");','    require(ok);','}'];
+  var code = document.getElementById('code'), msg = document.getElementById('msg'), act = document.getElementById('act');
+  function draw(lines, mark, cls){ code.innerHTML = lines.map(function(l,i){ return '<span class="ln'+(mark.indexOf(i)>-1?' '+cls:'')+'"><span class="n">'+(i+1)+'</span>'+L(l.replace(/&/g,'&amp;').replace(/</g,'&lt;'))+'</span>'; }).join(''); }
+  var state = 0; draw(bug, [], '');
+  window.wkState = 0;
+  act.addEventListener('click', function(){
+    state = (state + 1) % 3; window.wkState = state;
+    if (state === 1) { draw(bug, [2,4], 'bad'); msg.innerHTML = '<b>Reentrancy.</b> ETH is sent before the balance is reset, so the caller can re-enter <span class="mono">withdraw()</span> and drain the vault.'; act.textContent = 'Show the fix'; act.className = 'btn fix'; }
+    else if (state === 2) { draw(fix, [0,2], 'good'); msg.innerHTML = '<b>Fixed.</b> Reset the balance first, then send, and add a reentrancy guard. This is one 15-second Short.'; act.textContent = 'Replay'; act.className = 'btn replay'; }
+    else { draw(bug, [], ''); msg.innerHTML = 'This vault looks fine. <b>Can you spot the bug?</b>'; act.textContent = 'Spot the bug'; act.className = 'btn'; }
+  });
+  // Click-to-load Shorts
+  document.querySelectorAll('.short').forEach(function(b){ b.addEventListener('click', function(){
+    if (b.querySelector('iframe')) return;
+    var f = document.createElement('iframe'); f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true; f.title = b.getAttribute('aria-label'); b.appendChild(f); }); });
 })();
 </script>
 <script type="module">
-// 3D background: a rotating chain of blocks that follows the pointer
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// 3D chain behind the code panel: one block turns red on the bug, the chain turns lime on the fix
 const cv = document.getElementById('scene');
-if (!reduce) try {
+const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+try {
   const T = await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js');
   const r = new T.WebGLRenderer({canvas: cv, antialias: true, alpha: true});
-  r.setPixelRatio(Math.min(2, window.devicePixelRatio));
-  const s = new T.Scene(); s.fog = new T.Fog(0x0E0F12, 14, 32);
-  const cam = new T.PerspectiveCamera(40, 1, .1, 100);
+  r.setPixelRatio(Math.min(2, devicePixelRatio));
+  const s = new T.Scene(), cam = new T.PerspectiveCamera(38, 1, .1, 100);
+  s.fog = new T.Fog(0x0E0F12, 16, 30);
   s.add(new T.HemisphereLight(0xb8c6ff, 0x2a3315, 1.6));
-  const k1 = new T.PointLight(0xC6F432, 120, 40); k1.position.set(6, 6, 8); s.add(k1);
-  const k2 = new T.PointLight(0x7AA2FF, 100, 40); k2.position.set(-7, -4, 6); s.add(k2);
-  const g = new T.BoxGeometry(1.2, 1.2, 1.2), eg = new T.EdgesGeometry(g), N = 9, blocks = [], links = [];
+  const kl = new T.PointLight(0xC6F432, 110, 40); kl.position.set(6, 6, 8); s.add(kl);
+  const kb = new T.PointLight(0x7AA2FF, 90, 40); kb.position.set(-7, -3, 6); s.add(kb);
+  const kr = new T.PointLight(0xFF5A5A, 0, 18); s.add(kr);
+  const g = new T.BoxGeometry(1.1, 1.1, 1.1), eg = new T.EdgesGeometry(g), N = 8, BAD = 3, B = [], E = [], Lk = [];
+  const lime = new T.Color(0xC6F432), blue = new T.Color(0x7AA2FF), red = new T.Color(0xFF5A5A);
   for (let i = 0; i < N; i++) {
-    const b = new T.Mesh(g, new T.MeshStandardMaterial({color: 0x2c3140, metalness: .15, roughness: .5}));
-    b.add(new T.LineSegments(eg, new T.LineBasicMaterial({color: i % 3 === 1 ? 0x7AA2FF : 0xC6F432, toneMapped: false})));
-    s.add(b); blocks.push(b);
+    const m = new T.Mesh(g, new T.MeshStandardMaterial({color: 0x2c3140, metalness: .15, roughness: .5}));
+    const e = new T.LineSegments(eg, new T.LineBasicMaterial({color: i % 3 === 1 ? 0x7AA2FF : 0xC6F432, toneMapped: false}));
+    m.add(e); s.add(m); B.push(m); E.push(e);
   }
-  for (let i = 0; i < N - 1; i++) { const c = new T.Mesh(new T.CylinderGeometry(.05, .05, 1, 8), new T.MeshBasicMaterial({color: 0x3a3d33})); s.add(c); links.push(c); }
-  const ring = new T.Mesh(new T.TorusGeometry(4.6, .04, 10, 120), new T.MeshBasicMaterial({color: 0xC6F432, transparent: true, opacity: .35})); s.add(ring);
-  let mx = 0, my = 0, sy = 0;
+  for (let i = 0; i < N - 1; i++) { const c = new T.Mesh(new T.CylinderGeometry(.045, .045, 1, 8), new T.MeshBasicMaterial({color: 0x3a3d33})); s.add(c); Lk.push(c); }
+  const ring = new T.Mesh(new T.TorusGeometry(3.9, .04, 10, 120), new T.MeshBasicMaterial({color: 0xC6F432, transparent: true, opacity: 0})); s.add(ring);
+  let mx = 0, my = 0, bug = 0, fix = 0;
   addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
-  addEventListener('scroll', () => { sy = scrollY; }, {passive: true});
-  const size = () => { const w = innerWidth, h = innerHeight; r.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
-  addEventListener('resize', size); size();
-  const up = new T.Vector3(0, 1, 0);
-  r.setAnimationLoop(t => {
-    t /= 1000;
-    const wide = innerWidth > 1100, cx = wide ? Math.min(9, 3 + innerWidth / 400) : 1.5;
+  const size = () => { const w = cv.clientWidth, h = cv.clientHeight; r.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+  new ResizeObserver(size).observe(cv); size();
+  const up = new T.Vector3(0, 1, 0), tmp = new T.Color();
+  const frame = ms => {
+    const t = still ? 2 : ms / 1000, st = window.wkState || 0;
+    bug += ((st === 1 ? 1 : 0) - bug) * .08; fix += ((st === 2 ? 1 : 0) - fix) * .06;
     for (let i = 0; i < N; i++) {
-      const a = i / N * Math.PI * 2 + t * .25, b = blocks[i];
-      b.position.set(cx + Math.cos(a) * 2.2, (i - (N - 1) / 2) * 1.2, Math.sin(a) * 2.2);
-      b.rotation.set(t * .3 + i, t * .45 + i * .5, 0);
+      const a = i / N * Math.PI * 2 + t * .25, m = B[i];
+      let x = Math.cos(a) * 2.1; if (i === BAD) x += Math.sin(t * 38) * .05 * bug;
+      m.position.set(x, (i - (N - 1) / 2) * 1.15 + 1.6, Math.sin(a) * 2.1);
+      m.rotation.set(t * .3 + i, t * .45 + i * .5, 0);
+      m.scale.setScalar(i === BAD ? 1 + .2 * bug : 1);
+      tmp.copy(i % 3 === 1 ? blue : lime).lerp(lime, fix); if (i === BAD) tmp.lerp(red, bug);
+      E[i].material.color.copy(tmp);
+      m.material.emissive.setRGB(i === BAD ? .3 * bug : .02 * fix, .07 * fix, 0);
     }
-    for (let i = 0; i < N - 1; i++) { const A = blocks[i].position, B = blocks[i + 1].position, c = links[i];
-      c.position.copy(A).add(B).multiplyScalar(.5); const d = B.clone().sub(A); c.scale.set(1, d.length(), 1); c.quaternion.setFromUnitVectors(up, d.normalize()); }
-    ring.position.set(cx, 0, 0); ring.rotation.set(Math.PI / 2 + .35 + my * .3, t * .2, mx * .3);
-    cam.position.set(mx * 3, -my * 2 - sy * .004, 16); cam.lookAt(wide ? 2 : 0, -sy * .004, 0);
-    cv.style.opacity = wide ? Math.max(.2, .75 - sy / 1600) : Math.max(.1, .32 - sy / 1600);
+    for (let i = 0; i < N - 1; i++) { const A = B[i].position, C = B[i + 1].position, c = Lk[i];
+      c.position.copy(A).add(C).multiplyScalar(.5); const d = C.clone().sub(A); c.scale.set(1, d.length(), 1); c.quaternion.setFromUnitVectors(up, d.normalize()); }
+    kr.position.copy(B[BAD].position); kr.intensity = 45 * bug;
+    ring.material.opacity = .8 * fix; ring.position.y = 1.6; ring.scale.setScalar(.7 + .3 * fix); ring.rotation.set(Math.PI / 2 + .35, t * .3, 0);
+    cam.position.set(mx * 2.4, -my * 1.6 + 1.2, 15); cam.lookAt(0, 1.2, 0);
     r.render(s, cam);
-  });
+  };
+  r.setAnimationLoop(frame);
 } catch (e) { cv.style.display = 'none'; }
 </script>
 <!-- Cookie consent banner -->
