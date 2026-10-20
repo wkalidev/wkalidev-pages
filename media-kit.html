@@ -41,6 +41,21 @@ td.price{font-family:"JetBrains Mono",monospace;color:var(--lime);white-space:no
 a{color:var(--lime)}
 .cta{display:inline-block;margin-top:8px;background:var(--lime);color:#0E0F12;font-weight:700;padding:12px 20px;border-radius:12px;text-decoration:none}
 .note{font-size:13px;color:#7A7A73}
+.hero{position:relative}
+#scene{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;opacity:.9;transition:opacity .4s}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;transform-style:preserve-3d;will-change:transform}
+.card:hover{border-color:#3d4a1a;box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 0 1px rgba(198,244,50,.12)}
+.stat{font-size:clamp(34px,5vw,46px);margin:0 0 4px;letter-spacing:-.02em}
+.shorts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.short{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;cursor:pointer;padding:0}
+.short img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .25s,transform .4s}
+.short:hover img{opacity:1;transform:scale(1.04)}
+.short .play{position:absolute;inset:auto 0 0 0;padding:14px;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--text);font:600 15px/1.3 "Space Grotesk",sans-serif}
+.short .play b{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--lime);color:#0E0F12;margin-bottom:8px;font-size:16px}
+.short iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.card{transition:none}#scene{display:none}}
 </style>
 <!-- Google tag (GA4) with Consent Mode v2: nothing is tracked until the visitor accepts -->
 <script>
@@ -56,6 +71,7 @@ a{color:var(--lime)}
 </script>
 </head>
 <body>
+<canvas id="scene" aria-hidden="true"></canvas>
 <main class="wrap">
   <div class="logo"><span class="lime">{</span>wk<span class="lime">}</span> <span style="font-size:16px;color:var(--muted);font-weight:400">wkalidev</span></div>
 
@@ -63,30 +79,31 @@ a{color:var(--lime)}
   <h1>Smart contract security &amp; <span class="lime">AI x Web3</span>, for builders.</h1>
   <p>wkalidev is an independent full-stack Web3 &amp; AI developer and content creator. The content teaches developers and founders to ship smart contracts that don't get hacked, and to build faster with AI agents and MCP servers.</p>
 
-  <h2>Audience</h2>
-  <div class="grid">
+  <h2 class="reveal">Audience</h2>
+  <div class="grid reveal">
     <div class="card"><h3>Who</h3><p>Solidity / Clarity developers, Web3 startup founders, hackathon builders, AI engineers integrating onchain data.</p></div>
     <div class="card"><h3>Where</h3><p>Europe first (FR · IT · BE), then North America and global. Content in English.</p></div>
     <div class="card"><h3>Stage</h3><p>New channel, launched October 2026. New Shorts every day on YouTube, TikTok, Instagram, Facebook, X and Farcaster.</p></div>
   </div>
 
-  <h2>Early numbers</h2>
-  <div class="grid">
-    <div class="card"><h3 class="lime mono">2,200+</h3><p>YouTube views in the first 3 weeks (October 2026).</p></div>
-    <div class="card"><h3 class="lime mono">100%+</h3><p>Average view duration on 15 s Shorts: viewers watch them on repeat.</p></div>
-    <div class="card"><h3 class="lime mono">690+</h3><p>Views on the top Short: giving Claude live onchain data with MCP.</p></div>
+  <h2 class="reveal">Early numbers</h2>
+  <div class="grid reveal">
+    <div class="card"><h3 class="lime mono stat" data-count="2200" data-suffix="+">2,200+</h3><p>YouTube views in the first 3 weeks (October 2026).</p></div>
+    <div class="card"><h3 class="lime mono stat" data-count="100" data-suffix="%+">100%+</h3><p>Average view duration on 15 s Shorts: viewers watch them on repeat.</p></div>
+    <div class="card"><h3 class="lime mono stat" data-count="690" data-suffix="+">690+</h3><p>Views on the top Short: giving Claude live onchain data with MCP.</p></div>
   </div>
   <p class="note">Source: YouTube Analytics, October 1–20, 2026. Updated monthly.</p>
 
-  <h2>See the content</h2>
-  <p>
-    <a class="pill" href="https://youtube.com/shorts/j2CSekNveZw">▶ Give Claude live onchain data with MCP</a>
-    <a class="pill" href="https://youtube.com/shorts/nxEMvVepGbA">▶ Spot the Solidity bug: reentrancy</a>
-    <a class="pill" href="https://youtube.com/shorts/2oLz9Tk3GAk">▶ Claude Code writes Foundry security tests</a>
-  </p>
+  <h2 class="reveal">See the content</h2>
+  <div class="shorts reveal">
+    <button class="short" data-yt="j2CSekNveZw" aria-label="Play: Give Claude live onchain data with MCP"><img loading="lazy" src="https://i.ytimg.com/vi/j2CSekNveZw/hqdefault.jpg" alt=""><span class="play"><b>▶</b><br>Give Claude live onchain data with MCP</span></button>
+    <button class="short" data-yt="nxEMvVepGbA" aria-label="Play: Spot the Solidity bug, reentrancy"><img loading="lazy" src="https://i.ytimg.com/vi/nxEMvVepGbA/hqdefault.jpg" alt=""><span class="play"><b>▶</b><br>Spot the Solidity bug: reentrancy</span></button>
+    <button class="short" data-yt="2oLz9Tk3GAk" aria-label="Play: Claude Code writes Foundry security tests"><img loading="lazy" src="https://i.ytimg.com/vi/2oLz9Tk3GAk/hqdefault.jpg" alt=""><span class="play"><b>▶</b><br>Claude Code writes Foundry security tests</span></button>
+  </div>
+  <p class="note">Videos load from youtube-nocookie.com only when you click play.</p>
 
-  <h2>Content formats</h2>
-  <div class="grid">
+  <h2 class="reveal">Content formats</h2>
+  <div class="grid reveal">
     <div class="card"><h3>Spot the Bug</h3><p>15 s Shorts: a real smart contract vulnerability, the exploit path and the fix.</p></div>
     <div class="card"><h3>Security 101</h3><p>Security principles (CIA, AAA, prompt injection, token approvals) applied to smart contracts and AI agents.</p></div>
     <div class="card"><h3>MCP 101 &amp; Claude Tips</h3><p>How to build with Claude, Claude Code and MCP servers, from first prompt to onchain tools.</p></div>
@@ -94,7 +111,7 @@ a{color:var(--lime)}
     <div class="card"><h3>Build Onchain</h3><p>Zero-to-mainnet build-alongs on Base, Celo, Stacks and Arbitrum.</p></div>
   </div>
 
-  <h2>Channels</h2>
+  <h2 class="reveal">Channels</h2>
   <p>
     <a class="pill" href="https://youtube.com/@wkalidev">YouTube @wkalidev</a>
     <a class="pill" href="https://www.facebook.com/wkalidev">Facebook /wkalidev</a>
@@ -109,9 +126,9 @@ a{color:var(--lime)}
     <a class="pill" href="https://buymeacoffee.com/wkalidev">Buy Me a Coffee</a>
   </p>
 
-  <h2>Partnership options</h2>
+  <h2 class="reveal">Partnership options</h2>
   <p><span class="pill" style="color:var(--lime);border-color:var(--lime)">LAUNCH RATES · first 5 partners</span></p>
-  <table>
+  <table class="reveal">
     <tr><th>Format</th><th>What you get</th><th>Rate</th></tr>
     <tr><td>Dedicated Short</td><td>A Short built around your product, cross-posted to YouTube, TikTok, Instagram, Facebook, X and Farcaster.</td><td class="price">$49</td></tr>
     <tr><td>3-Short series</td><td>Three Shorts over one week (problem, demo, result), cross-posted everywhere.</td><td class="price">$129</td></tr>
@@ -120,22 +137,97 @@ a{color:var(--lime)}
   </table>
   <p class="note">Launch rates for the first 5 partners, then rates follow audience growth. Only tools I actually use and would recommend to clients. All sponsored content is clearly disclosed.</p>
 
-  <h2>Proof of work</h2>
-  <div class="grid">
+  <h2 class="reveal">Proof of work</h2>
+  <div class="grid reveal">
     <div class="card"><h3>Shipped onchain</h3><p>Verified mainnet contracts on Celo, Base and Stacks. 25+ open-source projects on <a href="https://github.com/wkalidev">GitHub</a>.</p></div>
     <div class="card"><h3>AI x Web3 tools</h3><p><a href="https://github.com/wkalidev/multichain-mcp">multichain-mcp</a>: an MCP server giving AI agents access to Stacks, Celo and Base. <a href="https://github.com/wkalidev/spot-the-bug-action">Spot the Bug Action</a>: Solidity PR scanning on GitHub.</p></div>
     <div class="card"><h3>Writing &amp; training</h3><p>Two ebooks (Mastering Claude, Web3 on Base &amp; Solana, EN + FR). Fortinet NSE 1 certified (Threat Landscape).</p></div>
   </div>
 
-  <h2>Beyond content</h2>
+  <h2 class="reveal">Beyond content</h2>
   <p>Full-stack development: smart contracts (Solidity, Clarity), dApps (Next.js, TypeScript, wagmi/viem), stablecoin payments, AI agents &amp; MCP servers, smart contract security reviews (from €350).</p>
 
-  <h2>Contact</h2>
+  <h2 class="reveal">Contact</h2>
   <p>Partnerships, sponsorships and client projects:</p>
   <a class="cta" href="mailto:hello@wkalidev.com">hello@wkalidev.com</a>
   <a class="cta" href="https://t.me/wkalidev" style="margin-left:10px;background:#15161A;color:#C6F432;border:2px solid #C6F432">Telegram · @wkalidev</a>
   <p class="note" style="margin-top:40px"><a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
 </main>
+<script>
+// Scroll reveal + counters
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    e.target.querySelectorAll('[data-count]').forEach(function(el){
+      var end=+el.dataset.count, suf=el.dataset.suffix||'', t0=null, dur=1400;
+      if(reduce){ el.textContent=end.toLocaleString('en-US')+suf; return; }
+      function step(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/dur), v=Math.round(end*(1-Math.pow(1-p,3)));
+        el.textContent=v.toLocaleString('en-US')+suf; if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  }); }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  // 3D tilt on cards (mouse only)
+  if(!reduce && window.matchMedia('(hover: hover)').matches){
+    document.querySelectorAll('.card').forEach(function(c){
+      c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform='perspective(700px) rotateX('+(-y*8)+'deg) rotateY('+(x*8)+'deg) translateZ(6px)'; });
+      c.addEventListener('mouseleave',function(){ c.style.transform=''; });
+    });
+  }
+  // Click-to-load YouTube Shorts
+  document.querySelectorAll('.short').forEach(function(b){ b.addEventListener('click',function(){
+    if(b.querySelector('iframe')) return;
+    var f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';
+    f.allow='autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen=true; f.title=b.getAttribute('aria-label');
+    b.appendChild(f); }); });
+})();
+</script>
+<script type="module">
+// 3D background: a rotating chain of blocks that follows the pointer
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cv = document.getElementById('scene');
+if (!reduce) try {
+  const T = await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js');
+  const r = new T.WebGLRenderer({canvas: cv, antialias: true, alpha: true});
+  r.setPixelRatio(Math.min(2, window.devicePixelRatio));
+  const s = new T.Scene(); s.fog = new T.Fog(0x0E0F12, 14, 32);
+  const cam = new T.PerspectiveCamera(40, 1, .1, 100);
+  s.add(new T.HemisphereLight(0xb8c6ff, 0x2a3315, 1.6));
+  const k1 = new T.PointLight(0xC6F432, 120, 40); k1.position.set(6, 6, 8); s.add(k1);
+  const k2 = new T.PointLight(0x7AA2FF, 100, 40); k2.position.set(-7, -4, 6); s.add(k2);
+  const g = new T.BoxGeometry(1.2, 1.2, 1.2), eg = new T.EdgesGeometry(g), N = 9, blocks = [], links = [];
+  for (let i = 0; i < N; i++) {
+    const b = new T.Mesh(g, new T.MeshStandardMaterial({color: 0x2c3140, metalness: .15, roughness: .5}));
+    b.add(new T.LineSegments(eg, new T.LineBasicMaterial({color: i % 3 === 1 ? 0x7AA2FF : 0xC6F432, toneMapped: false})));
+    s.add(b); blocks.push(b);
+  }
+  for (let i = 0; i < N - 1; i++) { const c = new T.Mesh(new T.CylinderGeometry(.05, .05, 1, 8), new T.MeshBasicMaterial({color: 0x3a3d33})); s.add(c); links.push(c); }
+  const ring = new T.Mesh(new T.TorusGeometry(4.6, .04, 10, 120), new T.MeshBasicMaterial({color: 0xC6F432, transparent: true, opacity: .35})); s.add(ring);
+  let mx = 0, my = 0, sy = 0;
+  addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+  addEventListener('scroll', () => { sy = scrollY; }, {passive: true});
+  const size = () => { const w = innerWidth, h = innerHeight; r.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+  addEventListener('resize', size); size();
+  const up = new T.Vector3(0, 1, 0);
+  r.setAnimationLoop(t => {
+    t /= 1000;
+    const wide = innerWidth > 1100, cx = wide ? Math.min(9, 3 + innerWidth / 400) : 1.5;
+    for (let i = 0; i < N; i++) {
+      const a = i / N * Math.PI * 2 + t * .25, b = blocks[i];
+      b.position.set(cx + Math.cos(a) * 2.2, (i - (N - 1) / 2) * 1.2, Math.sin(a) * 2.2);
+      b.rotation.set(t * .3 + i, t * .45 + i * .5, 0);
+    }
+    for (let i = 0; i < N - 1; i++) { const A = blocks[i].position, B = blocks[i + 1].position, c = links[i];
+      c.position.copy(A).add(B).multiplyScalar(.5); const d = B.clone().sub(A); c.scale.set(1, d.length(), 1); c.quaternion.setFromUnitVectors(up, d.normalize()); }
+    ring.position.set(cx, 0, 0); ring.rotation.set(Math.PI / 2 + .35 + my * .3, t * .2, mx * .3);
+    cam.position.set(mx * 3, -my * 2 - sy * .004, 16); cam.lookAt(wide ? 2 : 0, -sy * .004, 0);
+    cv.style.opacity = wide ? Math.max(.2, .75 - sy / 1600) : Math.max(.1, .32 - sy / 1600);
+    r.render(s, cam);
+  });
+} catch (e) { cv.style.display = 'none'; }
+</script>
 <!-- Cookie consent banner -->
 <div id="wk-cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" style="position:fixed;bottom:16px;left:16px;right:16px;max-width:520px;margin:auto;background:#15161B;color:#F4F4EF;border:1px solid #2A2B30;border-radius:14px;padding:14px 16px;font:14px/1.4 system-ui,sans-serif;display:none;z-index:9999;box-shadow:0 10px 40px rgba(0,0,0,.5)">
   I use Google Analytics to see which pages help people. OK? <a href="/privacy" style="color:#C6F432">Privacy</a>
