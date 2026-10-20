@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wkalidev · Privacy</title>
+<meta name="description" content="How wkalidev pages use analytics and what data is collected.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E0F12;--line:#2A2B30;--text:#F4F4EF;--muted:#B4B4AC;--lime:#C6F432}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.7}
+.wrap{max-width:780px;margin:0 auto;padding:56px 20px 80px}
+.logo{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:26px}
+.lime{color:var(--lime)}
+h1{font-size:clamp(30px,5vw,44px);margin:36px 0 4px;letter-spacing:-.02em}
+h2{font-size:20px;margin:36px 0 8px;padding-top:16px;border-top:1px solid var(--line)}
+p,li{color:var(--muted)}
+ol,ul{padding-left:22px}
+a{color:var(--lime)}
+.meta{font-family:"JetBrains Mono",monospace;font-size:13px;color:#7A7A73}
+</style>
+<!-- Google tag (GA4) with Consent Mode v2: nothing is tracked until the visitor accepts -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'});
+  try { if (localStorage.getItem('wk-consent') === 'yes') gtag('consent', 'update', {analytics_storage: 'granted'}); } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KBBXRDJZNT"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-KBBXRDJZNT');
+</script>
+</head>
+<body>
+<main class="wrap">
+  <div class="logo"><span class="lime">{</span>wk<span class="lime">}</span> <span style="font-size:15px;color:var(--muted);font-weight:400">wkalidev</span></div>
+  <h1>Privacy</h1>
+  <p class="meta">Last updated: 20 October 2026</p>
+
+  <p>This page explains what data is collected when you visit about.wkalidev.com. In short: nothing, unless you accept analytics.</p>
+
+  <h2>1. Analytics</h2>
+  <p>If you click <strong>Accept</strong> on the cookie banner, the site uses Google Analytics 4 to measure visits: pages viewed, how you arrived (for example from YouTube or X), approximate country, device type, and clicks on outbound links. This helps me see which pages and videos are useful. IP addresses are not stored by Google Analytics 4.</p>
+  <p>If you click <strong>No thanks</strong> or ignore the banner, Google Analytics runs in consent mode with analytics storage denied: no analytics cookies are set.</p>
+
+  <h2>2. Your choice</h2>
+  <p>Your choice is saved in your browser's local storage (key <code>wk-consent</code>). To change it, clear this site's data in your browser settings and reload the page: the banner will appear again.</p>
+
+  <h2>3. Contact and forms</h2>
+  <p>There are no forms on this site. If you email <a href="mailto:hello@wkalidev.com">hello@wkalidev.com</a>, your email is used only to reply to you.</p>
+
+  <h2>4. Third parties</h2>
+  <p>The site is hosted on Vercel and uses Google Fonts. Analytics data, if you accept, is processed by Google. Links to YouTube, X, Ko-fi and other platforms follow those platforms' own privacy policies.</p>
+
+  <h2>5. Contact</h2>
+  <p>Questions or data requests: <a href="mailto:hello@wkalidev.com">hello@wkalidev.com</a></p>
+  <p class="meta" style="margin-top:40px"><a href="/media-kit">Media kit</a> · <a href="/terms">Terms</a></p>
+</main>
+<!-- Cookie consent banner -->
+<div id="wk-cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" style="position:fixed;bottom:16px;left:16px;right:16px;max-width:520px;margin:auto;background:#15161B;color:#F4F4EF;border:1px solid #2A2B30;border-radius:14px;padding:14px 16px;font:14px/1.4 system-ui,sans-serif;display:none;z-index:9999;box-shadow:0 10px 40px rgba(0,0,0,.5)">
+  I use Google Analytics to see which pages help people. OK?
+  <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+    <button type="button" onclick="wkConsent(false)" style="background:none;color:#9A9B93;border:1px solid #3A3B40;border-radius:8px;padding:6px 12px;cursor:pointer">No thanks</button>
+    <button type="button" onclick="wkConsent(true)" style="background:#C6F432;color:#0B0C0F;border:0;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer">Accept</button>
+  </div>
+</div>
+<script>
+  function wkConsent(ok) {
+    try { localStorage.setItem('wk-consent', ok ? 'yes' : 'no'); } catch (e) {}
+    if (ok) gtag('consent', 'update', {analytics_storage: 'granted'});
+    document.getElementById('wk-cookie').style.display = 'none';
+  }
+  try { if (!localStorage.getItem('wk-consent')) document.getElementById('wk-cookie').style.display = 'block'; }
+  catch (e) { document.getElementById('wk-cookie').style.display = 'block'; }
+</script>
+</body>
+</html>
