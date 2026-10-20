@@ -93,6 +93,19 @@ h2{font:700 clamp(28px,3.4vw,40px)/1.1 "Space Grotesk",sans-serif;letter-spacing
 .plan .tag{font-size:13px;font-weight:700;margin-bottom:12px}
 .launch{display:flex;gap:10px;align-items:center;margin:0 0 28px;color:var(--muted)}
 .launch b{color:var(--lime)}
+/* builds */
+.builds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.build{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel)}
+.build .url{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--line);font:400 13px "JetBrains Mono",monospace;color:var(--dim)}
+.build .url i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.build .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.build h3{margin:0;font-size:22px;letter-spacing:-.01em}
+.build .chain{font-size:14px;color:var(--c)}
+.build p{margin:0;color:var(--muted);font-size:15.5px}
+.build ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.build .links{margin-top:auto;padding-top:14px;display:flex;gap:16px;font-size:15px}
+.build .links a{text-decoration:none;border-bottom:1px solid currentColor}
+@media (max-width:960px){.builds{grid-template-columns:1fr}}
 /* proof */
 .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 .proof h3{font-size:18px;margin:0 0 8px}
@@ -223,12 +236,51 @@ h2{font:700 clamp(28px,3.4vw,40px)/1.1 "Space Grotesk",sans-serif;letter-spacing
   </div>
 </section>
 
+<section id="builds">
+  <div class="wrap">
+    <h2>Things I've built</h2>
+    <p class="intro">Live products, not demos. Each one is where the Shorts come from.</p>
+    <div class="builds">
+      <article class="build" style="--c:#7AA2FF">
+        <div class="url"><i></i>stylusforge.wkalidev.com</div>
+        <div class="body">
+          <h3>StylusForge</h3>
+          <span class="chain">Arbitrum Stylus · Rust</span>
+          <p>An interactive course for writing Arbitrum Stylus smart contracts in Rust, with 21 lessons in 5 modules.</p>
+          <ul><li>Lessons are registered onchain</li><li>Completion certificates minted as NFTs on Arbitrum Sepolia</li></ul>
+          <div class="links"><a href="https://stylusforge.wkalidev.com">Open the app</a><a href="https://github.com/wkalidev/stylusforge">Code</a></div>
+        </div>
+      </article>
+      <article class="build" style="--c:#C6F432">
+        <div class="url"><i></i>volvic.wkalidev.com</div>
+        <div class="body">
+          <h3>Volvic</h3>
+          <span class="chain">Base mainnet · Aave V3</span>
+          <p>A non-custodial yield mini app: deposit USDC on Base and earn Aave V3 interest, with funds never held by the app.</p>
+          <ul><li>Verified router contract on Basescan</li><li>No owner or admin keys, with a deposit cap</li></ul>
+          <div class="links"><a href="https://volvic.wkalidev.com">Open the app</a><a href="https://basescan.org/address/0xE448378Dcace71f9b77816A25310810014986E93">Contract</a></div>
+        </div>
+      </article>
+      <article class="build" style="--c:#F2C94C">
+        <div class="url"><i></i>celobank-agent.vercel.app</div>
+        <div class="body">
+          <h3>CeloBank Agent</h3>
+          <span class="chain">Celo · AI agent</span>
+          <p>An AI banking agent on Celo that uses MCP tools and accepts x402 payments, registered under the ERC-8004 agent standard.</p>
+          <ul><li>Reviewed in three security passes, 22 findings fixed</li><li>CI, branch protection and tests on every change</li></ul>
+          <div class="links"><a href="https://celobank-agent.vercel.app">Open the app</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>Proof of work</h2>
     <p class="intro">Content comes from building. Everything below is public and can be checked.</p>
     <div class="proof">
-      <div><h3>Shipped onchain</h3><p>Verified mainnet contracts on Celo, Base and Stacks, and 25+ open-source projects on <a href="https://github.com/wkalidev">GitHub</a>.</p></div>
+      <div><h3>Open source</h3><p>Verified mainnet contracts on Celo, Base and Stacks, and 25+ open-source projects on <a href="https://github.com/wkalidev">GitHub</a>.</p></div>
       <div><h3>AI x Web3 tools</h3><p><a href="https://github.com/wkalidev/multichain-mcp">multichain-mcp</a> gives AI agents access to Stacks, Celo and Base. <a href="https://github.com/wkalidev/spot-the-bug-action">Spot the Bug Action</a> scans Solidity pull requests.</p></div>
       <div><h3>Writing and training</h3><p>Two ebooks, Mastering Claude and Web3 on Base &amp; Solana, in English and French. Fortinet NSE 1 certified.</p></div>
     </div>
